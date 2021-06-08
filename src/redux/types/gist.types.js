@@ -1,0 +1,3 @@
+export const GET_GISTS = 'GET_GISTS';
+export const GET_GISTS_SUCCESS = 'GET_GISTS_SUCCESS';
+export const GET_GISTS_FAIL = 'GET_GISTS_FAIL';
