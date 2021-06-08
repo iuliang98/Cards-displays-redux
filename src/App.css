@@ -63,13 +63,15 @@
   float: none;
   background-color: lightblue;
   text-align: left;
-  
+  margin-top: 2%;
+  font-size: 10px;
+  width: 50%;
 }
 
 
 
 .profile_img{
-  padding-top: 25px;
+  margin-top:1%;
   width:  200px;
   height: 200px;
   float: left;

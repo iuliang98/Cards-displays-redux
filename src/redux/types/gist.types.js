@@ -1,3 +1,3 @@
-export const GET_GISTS = 'GET_GISTS';
-export const GET_GISTS_SUCCESS = 'GET_GISTS_SUCCESS';
-export const GET_GISTS_FAIL = 'GET_GISTS_FAIL';
+export const GET_FORKS = 'GET_FORKS';
+export const GET_FORKS_SUCCESS = 'GET_FORKS_SUCCESS';
+export const GET_FORKS_FAIL = 'GET_FORKS_FAIL';

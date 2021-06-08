@@ -1,7 +1,8 @@
 export const API_BASE_URL = "https://api.github.com";
 
 export const API_HEADERS = {
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    'Authorization':'Token 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'
 }
 
 export const API_METHODS = {
@@ -19,7 +20,7 @@ export const API_ROUTES = {
         }
     },
     GIST : {
-        FORKS: {
+        GET_FORKS: {
             METHOD: API_METHODS.GET,
             URL: '/gists/<id>/forks'
         }

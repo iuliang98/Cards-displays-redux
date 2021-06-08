@@ -1,17 +1,20 @@
-import { GET_GISTS } from '../types/gist.types';
+import { GET_FORKS } from '../types/gist.types';
 
 
-export const getGists = (username) =>{
+export const getForks = (id) =>{
     return {
         meta:{
-            resource: "user",
-            procedure: "getGists",
+            resource: "gist",
+            procedure: "getForks",
             payload: {
-                parameters: { username },
+                parameters: { id },
                 queryParameters:null,
                 body:null
+            },
+            others: {
+                gistId: id
             }
         },
-        type: GET_GISTS
+        type: GET_FORKS
     };
 };

@@ -2,21 +2,26 @@ import React, {useState} from 'react';
 import { connect } from 'react-redux';
 import {Input} from 'react-input-component';
 import { Card, Button} from "react-bootstrap";
-
 import '../App.css';
 import{
     getGists,
-  } from "../redux/actions/gist.action"
+  } from "../redux/actions/user.action"
 import { useEffect } from 'react';
+
+
+import GistCard from '../components/gistcard';
+
 const UserGists = (props)=>{
     const [user, setUser] = useState();
     const [gists, setGists] = useState(props.gists);
+
 
     const handleOnChange = (value) =>{
       setUser(value);
     }
 
     useEffect(()=>{
+        //console.log(props.gists);
         setGists(props.gists);     
     },[props.gists]);
 
@@ -29,32 +34,30 @@ const UserGists = (props)=>{
             <h1 className="title">Search user's gists</h1>        
             <div className="container">
                 <Input className = ""type ="text" onChange = {(e)=> handleOnChange(e.target.value)}/>
-                <button onClick={() => handleSearch()} style ={{fontSize:"15px"}}>Search</button>
+                <button onClick={() => handleSearch()} style ={{fontSize:"15px", width:""}}>Search</button>
             </div>
             {
                 gists.length > 0 ?
-               
+                
                 <div className ="flex-column" style={{width:"100%"}} >
-                    <Card className="flex-item"  style={{fontSize:"10px", width:"50%", height:"270px"}} >
+                    <Card className="flex-item" >
                         <Card.Header>
+                            <Card.Title>
+                               {gists[0].owner.login.charAt(0).toUpperCase() + gists[0].owner.login.slice(1)}
+                            </Card.Title>
                             <Card.Img className = "profile_img" src={gists[0].owner.avatar_url} alt ="profile"/>
                         </Card.Header>
                         <Card.Body>
                             <Card.Link style={{fontSize:"20px"}} href = {gists[0].owner.html_url}>Profile</Card.Link>
                         </Card.Body>
                     </Card>
+ 
                     {gists.map((item, index) =>{
                         return(
-                        <Card className="flex-item" bg="dark" style={{fontSize:"10px", width:"50%"}} >
-                            <Card.Body  >
-                                <Card.Img className = "profile_img" src={gists[0].owner.avatar_url} alt ="profile"/>
-                                <Card.Footer>
-                                    <Card.Link href = {gists[0].owner.html_url}>Profile</Card.Link>
-                                </Card.Footer>
-                            </Card.Body>
-                        </Card>
+                            <GistCard  gist = {item}/>
                         )
                     })}
+ 
                 </div>   
                     :<div></div>
                 
@@ -65,7 +68,7 @@ const UserGists = (props)=>{
 
 const mapStateToProps = (state) => {
     return {
-      gists: state.gist.gists
+      gists: state.user.gists
     }
   }
   

@@ -1,28 +1,38 @@
-import {GET_GISTS, GET_GISTS_SUCCESS, GET_GISTS_FAIL} from '../types/gist.types';
+import {GET_FORKS, GET_FORKS_SUCCESS, GET_FORKS_FAIL} from '../types/gist.types';
 
 
 const INITIAL_STATE = {
-    gists: [],
+    forks: {},
 };
 
 
 const reducer = (state = INITIAL_STATE, action) => {
 
+    if(action && action.meta){
+        //console.log("gist id",action.meta.gistId)
+        /*console.log("reducer", {
+            ...state.forks,
+            [`${action.meta.gistId}`] : action.payload
+        });*/
+    }
+
+
     switch (action.type) {
-        case GET_GISTS:
+        case GET_FORKS:
             return {
-                ...state, 
-                posts: 'FETCHING',
+                ...state 
             };
-        case GET_GISTS_SUCCESS:
+        case GET_FORKS_SUCCESS:
             return {
                 ...state, 
-                gists: action.payload,
+                forks: {
+                    ...state.forks,
+                    [`${action.meta.gistId}`] : action.payload
+                }
             };
-        case GET_GISTS_FAIL:
+        case GET_FORKS_FAIL:
             return {
-                ...state, 
-                gists: []
+                ...state 
             };
             default: return state;
     }

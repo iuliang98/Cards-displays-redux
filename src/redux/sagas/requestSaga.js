@@ -1,7 +1,8 @@
 
 import API from '../../services/apiService';
-import { all, put, takeLatest } from 'redux-saga/effects';
-import { GET_GISTS } from '../types/gist.types';
+import { all, put, takeEvery, takeLatest } from 'redux-saga/effects';
+import { GET_GISTS } from '../types/user.types';
+import { GET_FORKS } from '../types/gist.types';
 const _API = API();
 
 export const handleRequestSaga = function* (action){
@@ -10,14 +11,15 @@ export const handleRequestSaga = function* (action){
 
     const API_STREAM = yield _API[resource][procedure](parameters, body, queryParameters);
 
-
+    //console.log(action.meta ?? action.meta.others)
     try {
         const response = yield API_STREAM.json();
         yield put({
             type: `${action.type}_SUCCESS`,
-            payload: response
+            payload: response,
+            meta: action.meta.others ?? null
         })
-
+       // console.log(response);
     } catch (error) {
         console.log('ERROR!')
     }
@@ -26,7 +28,7 @@ export const handleRequestSaga = function* (action){
 
 
 export const sagas = function* () {
-    const ACTIONS = [GET_GISTS];
+    const ACTIONS = [GET_GISTS, GET_FORKS];
 
-    yield all(ACTIONS.map((action) => takeLatest(action, handleRequestSaga)));
+    yield all(ACTIONS.map((action) => takeEvery(action, handleRequestSaga)));
 }

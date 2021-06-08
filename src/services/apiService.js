@@ -9,20 +9,23 @@ const buildFetch = ({parameters, body, queryParameters}, { METHOD, URL }) => {
 
     const payload = body ? JSON.stringify(body): null;
 
-    const { username } = parameters || {};
+    const { username, id } = parameters || {};
     let URL_REGEX;
   
-    console.log(parameters);
+    //console.log(parameters);
     if (username) {
       URL_REGEX = URL.replace("<username>", username);
-    }else{
+    }else if(id){
+        URL_REGEX = URL.replace("<id>", id);
+    }
+    else{
         URL_REGEX = URL;
      }
 
     return fetch(`${API_BASE_URL}${URL_REGEX}`, {
         method: METHOD,
         headers: API_HEADERS,
-        body: payload
+        body: payload,
     })
 }
 
