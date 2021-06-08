@@ -22,7 +22,13 @@ const UserGists = (props)=>{
 
     useEffect(()=>{
         //console.log(props.gists);
-        setGists(props.gists);     
+        
+        console.log(props.gists);
+        if(props.gists.message){
+            alert(props.gists.message)
+        }else{
+            setGists(props.gists);     
+        }
     },[props.gists]);
 
     const handleSearch = () =>{
@@ -30,11 +36,12 @@ const UserGists = (props)=>{
     }
 
     return (
-        <div>
+        <div className = "App">
             <h1 className="title">Search user's gists</h1>        
             <div className="container">
-                <Input className = ""type ="text" onChange = {(e)=> handleOnChange(e.target.value)}/>
-                <button onClick={() => handleSearch()} style ={{fontSize:"15px", width:""}}>Search</button>
+                <label htmlFor = "username">Username</label>
+                <Input id = "username" className = ""type ="text" onChange = {(e)=> handleOnChange(e.target.value)}/>
+                <button onClick={() => handleSearch()} style ={{fontSize:"15px", width:"2cm"}}>Search</button>
             </div>
             {
                 gists.length > 0 ?
@@ -48,7 +55,7 @@ const UserGists = (props)=>{
                             <Card.Img className = "profile_img" src={gists[0].owner.avatar_url} alt ="profile"/>
                         </Card.Header>
                         <Card.Body>
-                            <Card.Link style={{fontSize:"20px"}} href = {gists[0].owner.html_url}>Profile</Card.Link>
+                            <Card.Link style={{fontSize:"20px"}} href = {gists[0].owner.html_url} target="_blank">Profile</Card.Link>
                         </Card.Body>
                     </Card>
  

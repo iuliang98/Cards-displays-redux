@@ -76,3 +76,17 @@
   height: 200px;
   float: left;
 }
+
+.flex-forks {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.forks_img{
+  margin-top:1%;
+  width:  100px;
+  height: 100px;
+  float: left;
+  
+}
