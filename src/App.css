@@ -1,25 +1,15 @@
 .App {
-
   font-size: calc(10px + 2vmin);
   color: black;
+  width: 100%;
+  height: 100%;
+  background: white;
 }
 
 .title {
   text-align: center;
 }
-.App-header {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
 
-.App-link {
-  color: #61dafb;
-}
 
 .container {
   display: flex; /* or inline-flex */
@@ -89,4 +79,49 @@
   height: 100px;
   float: left;
   
+}
+
+
+.default_tag {
+  width: 100%;
+  text-align: right;
+}
+.C#_tag {
+   color: darkblue
+}
+
+.Cpp_tag{
+    color: lightblue;
+}
+
+.C_tag{
+  color: blueviolet;
+} 
+
+.java_tag{
+  color: darkgreen
+}
+
+.javascript_tag{
+  color: salmon;
+}
+
+.python_tag{
+  color: red
+}
+
+.ruby_tag{
+  color: plum
+}
+
+.assembly_tag{
+  color: lawngreen
+}
+
+.text_tag{
+  color :brown
+}
+
+.others_tag {
+  color :teal
 }

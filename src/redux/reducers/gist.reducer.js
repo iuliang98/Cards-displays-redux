@@ -8,15 +8,6 @@ const INITIAL_STATE = {
 
 const reducer = (state = INITIAL_STATE, action) => {
 
-    if(action && action.meta){
-        //console.log("gist id",action.meta.gistId)
-        /*console.log("reducer", {
-            ...state.forks,
-            [`${action.meta.gistId}`] : action.payload
-        });*/
-    }
-
-
     switch (action.type) {
         case GET_FORKS:
             return {

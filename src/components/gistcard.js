@@ -20,29 +20,24 @@ const GistCard = (props) =>{
 
 
     useEffect(() => {
-       // console.log(props.gist)
         setGist(props.gist);
         setId(props.gist.id);
-        //console.log(props.gist.id);
+
         props.getForks(props.gist.id);
     }, [props.gist]);
 
-    useEffect(() => {
-        //setForks(props.forks);
-        //console.log('forks by id:', props.forks[props.gist.id]);
-        //console.log('all forks', props.forks);
-    },[props.forks])
+
     
     return (
 
         <div  className="flex-item">
             {!_.isEmpty(props.gist)?
                 <Card  className = "flex-item w-100" >
-                    <Card.Title>
-                        Description: {props.gist.description!==""?props.gist.description:"none"}
+                    <Card.Title style={{paddingLeft:"5%"}}>
+                        Description: {props.gist.description!=="" && props.gist.description!==null?props.gist.description:"none"}
                     </Card.Title>
                     
-                    <Card.Header >
+                    <Card.Header style={{fontSize:"15px", paddingLeft:"5%"}}>
                         
                         Last 3 forks:{
                             
@@ -51,7 +46,7 @@ const GistCard = (props) =>{
                                 props.forks[props.gist.id].map((item, index)=>{
                                     if(index<3){
                                         return(
-                                            <div style={{textAlign:"center"}}>
+                                            <div style={{textAlign:"center", width:"2.5cm"} }>
                                                 <Card.Img className = "forks_img" src={item.owner.avatar_url}></Card.Img>   
                                                 <Card.Text>{item.owner.login}</Card.Text>    
                                             </div>
@@ -64,7 +59,7 @@ const GistCard = (props) =>{
                     
                     </Card.Header>
                     
-                    <Card.Body>
+                    <Card.Body style={{fontSize:"10px", paddingLeft:"5%"}}>
                         <Card.Text>
                             Last Update: {gist.updated_at}
                         </Card.Text>

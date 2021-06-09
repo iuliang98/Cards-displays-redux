@@ -1,3 +1,9 @@
+## About developing
+
+I didn't payed to much attention to the design of the application, because my goal was to implement the redux structure for it.
+I had some problems with the API and I lost some time, because of the rate limit(60/hour). After that I realised that I can use a token, generated from github, to increase that rate to 5000/hour.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -68,3 +74,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+

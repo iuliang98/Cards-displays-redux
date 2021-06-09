@@ -11,7 +11,7 @@ export const handleRequestSaga = function* (action){
 
     const API_STREAM = yield _API[resource][procedure](parameters, body, queryParameters);
 
-    //console.log(action.meta ?? action.meta.others)
+   
     try {
         const response = yield API_STREAM.json();
         yield put({
@@ -19,7 +19,6 @@ export const handleRequestSaga = function* (action){
             payload: response,
             meta: action.meta.others ?? null
         })
-       // console.log(response);
     } catch (error) {
         console.log('ERROR!')
     }

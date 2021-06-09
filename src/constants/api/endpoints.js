@@ -2,7 +2,7 @@ export const API_BASE_URL = "https://api.github.com";
 
 export const API_HEADERS = {
     'Content-Type': 'application/json',
-    'Authorization':'Token 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 '
+    'Authorization':'Token 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'
 }
 
 export const API_METHODS = {

@@ -14,32 +14,35 @@ import GistCard from '../components/gistcard';
 const UserGists = (props)=>{
     const [user, setUser] = useState();
     const [gists, setGists] = useState(props.gists);
-
+    const [message, setMessage] = useState("");
 
     const handleOnChange = (value) =>{
       setUser(value);
     }
 
     useEffect(()=>{
-        //console.log(props.gists);
-        
-        console.log(props.gists);
+
         if(props.gists.message){
-            alert(props.gists.message)
+            setMessage(props.gists.message);
         }else{
             setGists(props.gists);     
+
         }
     },[props.gists]);
 
     const handleSearch = () =>{
         props.getGists(user);
+
+        if(props.gists.length == 0 && !props.gists.message){
+            setMessage("This user has no gists!")
+        }
     }
 
     return (
         <div className = "App">
             <h1 className="title">Search user's gists</h1>        
             <div className="container">
-                <label htmlFor = "username">Username</label>
+                <label htmlFor = "username"style={{marginRight:"5mm"}}>Username</label>
                 <Input id = "username" className = ""type ="text" onChange = {(e)=> handleOnChange(e.target.value)}/>
                 <button onClick={() => handleSearch()} style ={{fontSize:"15px", width:"2cm"}}>Search</button>
             </div>
@@ -66,7 +69,7 @@ const UserGists = (props)=>{
                     })}
  
                 </div>   
-                    :<div></div>
+                    :<h2 className="title" style={{paddingTop:"5%"}}>{message}</h2>
                 
             }
         </div>

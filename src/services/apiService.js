@@ -5,14 +5,13 @@ import { camelCase, reduce } from 'lodash';
 const buildFetch = ({parameters, body, queryParameters}, { METHOD, URL }) => {
 
     // Note: queryParameter routes not yet supported
-    // Note: parameters routes not yet supported
 
     const payload = body ? JSON.stringify(body): null;
 
     const { username, id } = parameters || {};
     let URL_REGEX;
   
-    //console.log(parameters);
+
     if (username) {
       URL_REGEX = URL.replace("<username>", username);
     }else if(id){
